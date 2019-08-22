@@ -1,0 +1,38 @@
+<div [formGroup]="form">
+    <div [ngSwitch]="question.controlType">
+        <ion-list *ngSwitchCase="'textbox'">
+            <ion-item>
+                <ion-label color="dark" style="font-weight: bolder">{{question.label}}</ion-label>
+                <ion-input placeholder="Please enter" [formControlName]="question.key" [id]="question.key"
+                    [type]="question.type"></ion-input>
+            </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'dropdown'">
+            <ion-item>
+                <ion-label color="dark" style="font-weight: bolder">{{question.label}}</ion-label>
+                <ion-select placeholder="Please Select" stacked [id]="question.key"  [formControlName]="question.key">
+                    <ion-select-option justify-content-center slot="start" *ngFor="let opt of question.options" [value]="opt.key">{{opt.value}}
+                    </ion-select-option>
+                </ion-select>
+            </ion-item>
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'radiobutton'">
+            <ion-radio-group placeholder="Please enter" [id]="question.key" [formControlName]="question.key" name="radio-group"
+                (ionChange)="radioGroupChange($event)">
+                <ion-list-header>
+                    <ion-label  color="dark" style="font-weight: bolder">{{question.label}}</ion-label>
+                </ion-list-header>
+
+                <ion-item *ngFor="let opt of question.options; let index=index;">
+                    <ion-label>{{opt.value}}</ion-label>
+                    <ion-radio slot="start" [value]="opt.key"></ion-radio>
+                </ion-item>
+
+            </ion-radio-group>
+        </ion-list>
+    </div>
+
+    <div class="errorMessage" *ngIf="!isValid">{{question.label}} is required</div>
+</div>

@@ -9,4 +9,38 @@
    
   <ion-content padding>
      <h3>   Patient Notifications</h3>
+     <ion-grid>
+      <ion-row>
+        <ion-col *ngFor="let e of filteredVisits" size-xs="12" size-sm="6"
+         size-md="4" size-lg="3" size-xl="2">
+            <ion-card color="dark">
+              <ion-card-header>
+                <ion-card-subtitle>
+                
+                    {{e.dayNumber}}  {{e.monthName}} ,  {{e.dayName}}
+                      
+                   
+                </ion-card-subtitle>
+                <ion-card-title>
+                   <ion-text>Visit Title</ion-text>
+                 
+                  <!-- {{e.dayNumber}} {{e.monthName}} -->
+                </ion-card-title>
+              </ion-card-header>
+              <ion-item>
+                  <ion-icon *ngIf="e.isVisitDay" (click)="details(e)" name="calendar" slot="start">
+          
+                    </ion-icon>
+                    <ion-icon *ngIf="!e.isVisitDay" (click)="details(e)" name="alarm" slot="start">
+          
+                      </ion-icon>
+
+                     
+                   <ion-button outline-color="black" fill="outline" slot="end" (click)="details(e)"> details</ion-button>
+            
+              </ion-item>
+            </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-content>
