@@ -6,6 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { PatientNotificationPage } from './notification.page';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalPage } from '../modal/modal.page';
 
 const routes: Routes = [
   {
@@ -15,12 +17,15 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  declarations: [PatientNotificationPage,ModalPage ],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    NgbModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [PatientNotificationPage]
+  entryComponents: [ModalPage]
+ 
 })
 export class PatientNotificationPageModule {}

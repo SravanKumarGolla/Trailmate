@@ -3,6 +3,8 @@ export class VisitCalendarDates {
    dayNumber:number;
    isVisitDay:boolean;
    monthName:string;
+   reminderset:boolean;
+   reminderval:string;
 }
 export class AllDateCollection
 {
