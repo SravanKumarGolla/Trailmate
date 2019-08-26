@@ -8,14 +8,17 @@ import { QuestionService } from 'src/app/question.service';
 })
 export class PatientSurveyPage implements OnInit {
   questions: any[];
+  mobile:boolean;
   constructor(private service: QuestionService) { 
     debugger
-    this.questions = this.service.getQuestions();
+    this.questions = this.service.getSurveyQuestionnaire();
     console.log('this.questions :' + JSON.stringify(this.questions))
   }
 
   ngOnInit() {
-    
+    if (window.screen.width === 360) { // 768px portrait
+      this.mobile = true;
+    }
   }
 
 }

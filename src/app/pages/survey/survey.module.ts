@@ -6,6 +6,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { SurveyPage } from './survey.page';
+import { ApiService } from 'src/app/trialmate.service';
+import { SpinnerDialog } from '@ionic-native/spinner-dialog/ngx';
+import { ModalPage } from '../modal/modal.page';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
   {
@@ -19,8 +23,10 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    NgbModule,
     RouterModule.forChild(routes)
   ],
+  providers: [ApiService,SpinnerDialog],
   declarations: [SurveyPage]
 })
 export class SurveyPageModule {}

@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
  
 import { IonicModule } from '@ionic/angular';
  
 import { MenuPage } from './menu.page';
+import { DynamicFormComponent } from '../dynamicform/dynamic-form.component';
+import { DynamicFormQuestionComponent } from '../dynamicformquestion/dynamic-form-question.component';
+import { PatientSurveyPageModule } from '../patientsurvey/survey.module';
+import { DisplaySurveyPageModule } from '../displaysurvey/displaysurvey.module';
  
 const routes: Routes = [
   {
@@ -36,6 +40,10 @@ const routes: Routes = [
       {
         path: 'viewnotifications',
         loadChildren: '../patientnotification/notification.module#PatientNotificationPageModule'
+      },
+      {
+        path: 'displaysurvey',
+        loadChildren: '../displaysurvey/displaysurvey.module#DisplaySurveyPageModule'
       }
     ]
   }
@@ -46,6 +54,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
   declarations: [ MenuPage ]

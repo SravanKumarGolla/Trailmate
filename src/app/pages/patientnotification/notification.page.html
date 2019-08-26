@@ -10,6 +10,16 @@
    
   <ion-content padding>
      <h3>   Patient Notifications</h3>
+
+     <ion-item>
+        <ion-label>Month:</ion-label>
+        <ion-select placeholder="Select Month--" (ionChange)="onMonthChange($event)">
+        <ion-select-option *ngFor="let month of monthNames" [selected]="selected_month == month" value={{month}}>{{ month }}</ion-select-option> 
+        
+        </ion-select>
+        </ion-item> 
+
+
      <ion-grid>
       <ion-row >
         <ion-col *ngFor="let e of filteredVisits" size-xs="12" size-sm="6"
@@ -23,11 +33,11 @@
                    
                 </ion-card-subtitle>
                 <ion-card-title>
-                   <ion-text>Visit Title</ion-text>
+                   <ion-text>{{e?.visitDescription}}</ion-text>
                  
                   <!-- {{e.dayNumber}} {{e.monthName}} -->
                 </ion-card-title>
-                <ion-label *ngIf="e.reminderset">reminder set at {{e.reminderval}}</ion-label>
+                <ion-label *ngIf="e.reminderset">we will inform you at {{e.reminderval}}</ion-label>
               </ion-card-header>
               <ion-item>
                   <ion-icon *ngIf="e.isVisitDay" (click)="details(e)" name="calendar" slot="start">
@@ -38,8 +48,8 @@
                       </ion-icon>
 
                      
-                   <ion-button outline-color="black" fill="outline" slot="end" (click)="details(e)"> view</ion-button>
-            
+                   <!-- <ion-button outline-color="black" fill="outline" slot="end" (click)="details(e)"> view</ion-button>
+             -->
               </ion-item>
             </ion-card>
         </ion-col>

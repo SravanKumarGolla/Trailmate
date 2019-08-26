@@ -1,4 +1,4 @@
-import { Component, OnInit, Input,AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input,AfterViewInit, AfterViewChecked } from '@angular/core';
 import { VisitCalendarDates, VisitDetails, AllDateCollection } from 'src/app/models/reminders';
 import { DatePipe } from '@angular/common'
 import { ModalController } from '@ionic/angular';
@@ -15,7 +15,10 @@ import { retry } from 'rxjs/operators';
   styleUrls: ['./notification.page.scss'],
   providers: [DatePipe]
 })
-export class PatientNotificationPage implements OnInit,AfterViewInit  {
+export class PatientNotificationPage implements OnInit,AfterViewInit,AfterViewChecked  {
+
+  selected_month: any; 
+ 
   cardElement: HTMLElement;
   patientCalendar = [];
   filteredVisits = [];
@@ -35,14 +38,17 @@ export class PatientNotificationPage implements OnInit,AfterViewInit  {
       return "dark"
      }
   }
+  ngAfterViewChecked(){
+ 
+  }
   ngAfterViewInit() {
-    debugger
+    
     var visitDet:any=[];
     if(localStorage.getItem('reminderDetail')){
       visitDet = JSON.parse(localStorage.getItem('reminderDetail'));
     }
     console.log('reminderDetail : ' + JSON.stringify(visitDet))
-    debugger
+    
       if(visitDet){
         for (let visitdt of visitDet) {
           if(visitdt.visitdetail){
@@ -51,7 +57,7 @@ export class PatientNotificationPage implements OnInit,AfterViewInit  {
               {
                   dt.reminderset = true;
                   dt.reminderval= visitdt.data;
-                  debugger
+                  
                   this.cardElement= document.getElementById(visitdt.visitdetail.dayNumber.toString() + visitdt.visitdetail.monthName.toString() + visitdt.visitdetail.dayName.toString()) as HTMLElement;
                   if(this.cardElement) {
                     this.cardElement.removeAttribute("color");
@@ -88,7 +94,7 @@ export class PatientNotificationPage implements OnInit,AfterViewInit  {
     modal.onDidDismiss()
     .then((data) => {
       this.modalClosedData = data['data']; // Here's your selected user!
-      debugger
+      
       this.cardElement= document.getElementById(data['data'].visitdetail.dayNumber.toString()+data['data'].visitdetail.monthName.toString()+data['data'].visitdetail.dayName.toString()) as HTMLElement;
       this.cardElement.removeAttribute("color");
       this.cardElement.setAttribute("color", "primary"); 
@@ -116,12 +122,13 @@ export class PatientNotificationPage implements OnInit,AfterViewInit  {
 
 
   constructor(public datepipe: DatePipe,private modalService: NgbModal,public modalController: ModalController) {
-    
+    this.selected_month = 'September';
     var point = (function () {
       var point = new VisitDetails();
       point.id = 1;
-      point.StartDate = new Date('08/09/2019');
-      point.EndDate = new Date('08/09/2019');
+      point.StartDate = new Date('09/09/2019');
+      point.EndDate = new Date('09/09/2019');
+      point.VisitDescription = "Labs Study"
       return point;
     })();
 
@@ -130,6 +137,7 @@ export class PatientNotificationPage implements OnInit,AfterViewInit  {
 
     dateObj.visitDate = this.datepipe.transform(point.StartDate.toString(), 'MM/dd/yyyy');
     dateObj.isVisitDay = true;
+    dateObj.visitDescription = "Labs Study";
     //this.calendarDates.push(dateObj)
     dateObj = null;
 
@@ -137,8 +145,9 @@ export class PatientNotificationPage implements OnInit,AfterViewInit  {
     point = (function () {
       var point = new VisitDetails();
       point.id = 2;
-      point.StartDate = new Date('08/22/2019');
-      point.EndDate = new Date('08/22/2019');
+      point.StartDate = new Date('09/22/2019');
+      point.EndDate = new Date('09/22/2019');
+      point.VisitDescription = "Randomization"
       return point;
     })();
     this.visitsCollection.push(point);
@@ -147,14 +156,16 @@ export class PatientNotificationPage implements OnInit,AfterViewInit  {
 
     dateObj.visitDate = this.datepipe.transform(point.StartDate.toString(), 'MM/dd/yyyy');
     dateObj.isVisitDay = true;
+    dateObj.visitDescription = "Randomization";
     //this.calendarDates.push(dateObj)
     dateObj = null;
     point = null;
     point = (function () {
       var point = new VisitDetails();
       point.id = 3;
-      point.StartDate = new Date('09/09/2019');
-      point.EndDate = new Date('09/09/2019');
+      point.StartDate = new Date('10/09/2019');
+      point.EndDate = new Date('10/09/2019');
+      point.VisitDescription = "Labs Study"
       return point;
     })();
     this.visitsCollection.push(point);
@@ -162,14 +173,16 @@ export class PatientNotificationPage implements OnInit,AfterViewInit  {
 
     dateObj.visitDate = this.datepipe.transform(point.StartDate.toString(), 'MM/dd/yyyy');
     dateObj.isVisitDay = true;
+    dateObj.visitDescription = "Labs Study";
     //this.calendarDates.push(dateObj)
     dateObj = null;
     point = null;
     point = (function () {
       var point = new VisitDetails();
       point.id = 4;
-      point.StartDate = new Date('09/21/2019');
-      point.EndDate = new Date('09/21/2019');
+      point.StartDate = new Date('10/21/2019');
+      point.EndDate = new Date('10/21/2019');
+      point.VisitDescription = "Randomization"
       return point;
     })();
     this.visitsCollection.push(point);
@@ -177,6 +190,7 @@ export class PatientNotificationPage implements OnInit,AfterViewInit  {
 
     dateObj.visitDate = this.datepipe.transform(point.StartDate.toString(), 'MM/dd/yyyy');
     dateObj.isVisitDay = true;
+    dateObj.visitDescription = "Randomization";
     //this.calendarDates.push(dateObj)
     dateObj = null;
   }
@@ -200,6 +214,7 @@ export class PatientNotificationPage implements OnInit,AfterViewInit  {
       let dayName = this.getDayName(dt.visitDate, null);
       let monthName = this.getMonthName(dt.visitDate);
       let dayNumber = Number(dt.visitDate.toString().split('/')[1])
+      
       var entry = (function () {
         var visitCalDate = new VisitCalendarDates();
         visitCalDate.dayName = dayName
@@ -208,6 +223,7 @@ export class PatientNotificationPage implements OnInit,AfterViewInit  {
         visitCalDate.isVisitDay = dt.isVisitDay
         visitCalDate.reminderset=false;
         visitCalDate.reminderval='';
+        visitCalDate.visitDescription= dt.isVisitDay ? "Labs Study" : "No Events";
         return visitCalDate;
       })();
 
@@ -216,10 +232,13 @@ export class PatientNotificationPage implements OnInit,AfterViewInit  {
         value: entry
       })
     }
+    
     for (let key in this.patientCalendar) {
       
       let value = this.patientCalendar[key];
-      if (value.key == "August") {
+   
+      if (value.key == this.selected_month.toString()) {
+
         this.filteredVisits.push(value.value)
       }
     }
@@ -229,7 +248,7 @@ export class PatientNotificationPage implements OnInit,AfterViewInit  {
       visitDet = JSON.parse(localStorage.getItem('reminderDetail'));
     }
     console.log('reminderDetail : ' + JSON.stringify(visitDet))
-    debugger
+    
       if(visitDet){
         for (let visitdt of visitDet) {
           if(visitdt.visitdetail){
@@ -238,7 +257,7 @@ export class PatientNotificationPage implements OnInit,AfterViewInit  {
               {
                   dt.reminderset = true;
                   dt.reminderval= visitdt.data;
-                  debugger
+                  
                   this.cardElement= document.getElementById(visitdt.visitdetail.dayNumber.toString() + visitdt.visitdetail.monthName.toString() + visitdt.visitdetail.dayName.toString()) as HTMLElement;
                   if(this.cardElement) {
                     this.cardElement.removeAttribute("color");
@@ -258,6 +277,55 @@ export class PatientNotificationPage implements OnInit,AfterViewInit  {
     
    console.log(JSON.stringify(this.filteredVisits))
   }
+
+  onMonthChange($event){ 
+    this.filteredVisits=[];
+    this.selected_month=$event.target.value;
+    for (let key in this.patientCalendar) {
+      
+      let value = this.patientCalendar[key];
+   
+      if (value.key == this.selected_month.toString()) {
+
+        this.filteredVisits.push(value.value)
+      }
+    }
+    
+    var visitDet:any=[];
+    if(localStorage.getItem('reminderDetail')){
+      visitDet = JSON.parse(localStorage.getItem('reminderDetail'));
+    }
+    console.log('reminderDetail : ' + JSON.stringify(visitDet))
+    
+      if(visitDet){
+        for (let visitdt of visitDet) {
+          if(visitdt.visitdetail){
+            for (let dt of this.filteredVisits) {
+              if(visitdt.visitdetail.dayName === dt.dayName && visitdt.visitdetail.dayNumber === dt.dayNumber && visitdt.visitdetail.monthName == dt.monthName)
+              {
+                  dt.reminderset = true;
+                  dt.reminderval= visitdt.data;
+                  
+                  this.cardElement= document.getElementById(visitdt.visitdetail.dayNumber.toString() + visitdt.visitdetail.monthName.toString() + visitdt.visitdetail.dayName.toString()) as HTMLElement;
+                  if(this.cardElement) {
+                    this.cardElement.removeAttribute("color");
+                    this.cardElement.setAttribute("color", "primary"); 
+  
+                  }
+                 
+                  break;
+              }
+            }
+          }
+         
+        }
+      }
+      
+
+
+    } 
+
+
   getDayName(dateStr, locale) {
     var date = new Date(dateStr);
     return date.toLocaleDateString("en-US", { weekday: 'long' });

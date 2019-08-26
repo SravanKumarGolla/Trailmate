@@ -5,10 +5,12 @@ export class VisitCalendarDates {
    monthName:string;
    reminderset:boolean;
    reminderval:string;
+   visitDescription:string;
 }
 export class AllDateCollection
 {
     visitDate:string;
+    visitDescription:string;
     isVisitDay : boolean;
 }
 
@@ -23,5 +25,6 @@ export class VisitDetails
     id:number;
     StartDate:Date;
     EndDate:Date;
+    VisitDescription:string;
 
 }

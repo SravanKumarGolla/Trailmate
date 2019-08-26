@@ -50,6 +50,11 @@ export class MenuPage implements OnInit {
           title: 'View Notifications',
           url: '/menu/viewnotifications',
           icon: 'notifications'
+        },
+        {
+          title: 'Survey Details',
+          url: '/menu/displaysurvey',
+          icon: 'notifications'
         }
       ]
     }

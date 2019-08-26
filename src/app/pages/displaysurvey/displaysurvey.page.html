@@ -1,0 +1,27 @@
+<div class="loading-screen-wrapper" *ngIf="loading">
+    <div class="loading-screen-icon">
+      Loading...
+    </div>
+  </div>
+
+
+
+ 
+    <ion-header>
+        <ion-toolbar color="primary">
+          <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+          <ion-title>Survey Questinnaire</ion-title>
+        </ion-toolbar>
+      </ion-header>
+       
+      <ion-content padding>
+         <h3>  Survey Questinnaire </h3>
+         <div>
+    
+            <app-dynamic-form [questions]="questions"></app-dynamic-form>
+          </div>
+      </ion-content>
+
+       
