@@ -10,7 +10,9 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Trialmate</ion-title>
+    <ion-title slot="start">Trialmate</ion-title>
+    <ion-icon name="log-out" slot="end"></ion-icon> 
+    <ion-label slot="end" style="padding:10px;" (click)="logOut($event)" >LogOut</ion-label>   
   </ion-toolbar>
 </ion-header>
 
@@ -28,11 +30,11 @@
             <ion-card-title>
               <ion-text> {{e?.PatientName}} - {{e?.VisitDescription}}</ion-text>
               <ion-img *ngIf="e.SurveyStatus == 'Responded' && e.HappyIndex=='ThinkingToContinue'" col-6
-              src='../assets/img/Neutral_Blue.png' style="width:20%"></ion-img>
+              src='../assets/img/Neutral_Blue.png' style="width:10%"></ion-img>
             <ion-img *ngIf="e.SurveyStatus == 'Responded' && e.HappyIndex=='WillNotContinue'" col-6
-              src='../assets/img/Unhappy_Blue.png' style="width:20%"></ion-img>
+              src='../assets/img/Unhappy_Blue.png' style="width:10%"></ion-img>
             <ion-img *ngIf="e.SurveyStatus == 'Responded' && e.HappyIndex=='HappyToContinue'" col-6
-              src='../assets/img/Happy.jpg' style="width:20%"></ion-img>
+              src='../assets/img/Happy.jpg' style="width:10%"></ion-img>
 
             </ion-card-title>
             <ion-card-subtitle>
@@ -113,49 +115,49 @@
         </div>
       </ion-col>
       <ion-col size="2">
-        <div>
-          <ion-item large>
-            <ion-icon color="white" large *ngIf="e.VisitStatus == 'Done'" name="done-all"></ion-icon>
-            <ion-icon color="white" [id]="'visitscheduled'+e.PatientId + e.VisitId" large
+  
+          
+         <ion-icon class="visitStatus" color="white" *ngIf="e.VisitStatus == 'Done'" name="done-all">
+             
+            </ion-icon>
+         
+            <ion-icon class="visitStatus" color="white" [id]="'visitscheduled'+e.PatientId + e.VisitId"
               *ngIf="e.VisitStatus == 'Scheduled'" name="calendar"
               (click)="scheduleVisit($event,e?.VisitDescription,e)"></ion-icon>
-          </ion-item>
+      
 
 
 
-        </div>
+        
       </ion-col>
       <ion-col size="2">
-        <div>
-          <ion-item large>
-            <ion-icon color="white" large *ngIf="e.SurveyStatus == 'Responded'" name="done-all"></ion-icon>
+        
+            <ion-icon color="white" *ngIf="e.SurveyStatus == 'Responded'" name="done-all">
+
+            </ion-icon>
             <ion-icon color="white" [id]="'megaphone'+e.PatientId + e.VisitId" large
               *ngIf="e.SurveyStatus == 'VisitCompletedSurveyNotResponded'" name="megaphone"
               (click)="presentAlert($event,e?.VisitDescription,e)"></ion-icon>
             <ion-icon color="white" [id]="'surveyscheduled'+e.PatientId + e.VisitId"
               *ngIf="e.SurveyStatus == 'VisitNotCompleted'" name="close-circle"></ion-icon>
-          </ion-item>
-
-
-        </div>
       </ion-col>
       <ion-col *ngIf="(i % 2 != 0)" size="2">
 
         <ion-img *ngIf="e.SurveyStatus == 'Responded' && e.HappyIndex=='ThinkingToContinue'" col-6
-          src='../assets/img/Neutral_Blue.png' style="width:20%"></ion-img>
+          src='../assets/img/Neutral_Blue.png' style="width:10%"></ion-img>
         <ion-img *ngIf="e.SurveyStatus == 'Responded' && e.HappyIndex=='WillNotContinue'" col-6
-          src='../assets/img/Unhappy_Blue.png' style="width:20%"></ion-img>
+          src='../assets/img/Unhappy_Blue.png' style="width:10%"></ion-img>
         <ion-img *ngIf="e.SurveyStatus == 'Responded' && e.HappyIndex=='HappyToContinue'" col-6
-          src='../assets/img/Happy.jpg' style="width:20%"></ion-img>
+          src='../assets/img/Happy.jpg' style="width:10%"></ion-img>
 
       </ion-col>
       <ion-col *ngIf="(i % 2 == 0)" size="2">
         <ion-img *ngIf="e.SurveyStatus == 'Responded' && e.HappyIndex=='ThinkingToContinue'" col-6
-          src='../assets/img/Neutral.png' style="width:20%"></ion-img>
+          src='../assets/img/Neutral.png' style="width:10%"> </ion-img>
         <ion-img *ngIf="e.SurveyStatus == 'Responded' && e.HappyIndex=='WillNotContinue'" col-6
-          src='../assets/img/Unhappy.jpg' style="width:20%"></ion-img>
+          src='../assets/img/Unhappy.jpg' style="width:10%"></ion-img>
         <ion-img *ngIf="e.SurveyStatus == 'Responded' && e.HappyIndex=='HappyToContinue'" col-6
-          src='../assets/img/Happy.jpg' style="width:20%"></ion-img>
+          src='../assets/img/Happy.jpg' style="width:10%"></ion-img>
 
       </ion-col>
     </ion-row>

@@ -15,7 +15,7 @@ export class MenuPage implements OnInit {
       icon: 'home'
     },
     {
-      title: 'Manage Patients',
+      title: 'Manage Trial',
       children: [
         {
           title: 'Manage Notifications',
@@ -23,9 +23,9 @@ export class MenuPage implements OnInit {
           icon: 'notifications'
         },
         {
-          title: 'Manage Survey',
+          title: 'Manage Patients',
           url: '/menu/surveys',
-          icon: 'megaphone'
+          icon: 'people'
         }
       ]
     }
@@ -41,20 +41,20 @@ export class MenuPage implements OnInit {
       title: 'Manage Trial',
       children: [
        
+        // {
+        //   title: 'Respond Survey',
+        //   url: '/menu/respondsurvey',
+        //   icon: 'megaphone'
+        // },
         {
-          title: 'Respond Survey',
-          url: '/menu/respondsurvey',
-          icon: 'megaphone'
-        },
-        {
-          title: 'View Notifications',
+          title: 'Manage Visits',
           url: '/menu/viewnotifications',
           icon: 'notifications'
         },
         {
-          title: 'Survey Details',
+          title: 'Respond Survey',
           url: '/menu/displaysurvey',
-          icon: 'notifications'
+          icon: 'megaphone'
         }
       ]
     }

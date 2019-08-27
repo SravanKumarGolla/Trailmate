@@ -19,6 +19,8 @@
     border: think solid black;
     }
 
+   
+
     .odd{
       background-color  :#3880ff ;
       color:white
@@ -27,11 +29,15 @@
       background-color  : white;
       color: #3880ff
     }
-    .header-font
-    {
-      font-weight: bolder;
-      font-size: large
+
+    .visitStatus{
+      color: red;
     }
+    // .header-font
+    // {
+    //   font-weight: bolder;
+    //   font-size: large
+    // }
 
     ion-item {
       --background: rgba(0,0,0,0);

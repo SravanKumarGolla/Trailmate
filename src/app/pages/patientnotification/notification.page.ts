@@ -6,6 +6,7 @@ import { ModalPage } from '../modal/modal.page';
 
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { retry } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 
 
@@ -79,7 +80,9 @@ export class PatientNotificationPage implements OnInit,AfterViewInit,AfterViewCh
 
     // modalRef.componentInstance.name = 'World';
   }
-
+  hasAnyVisitsToDisplay(){
+    return this.filteredVisits.length===0;
+  }
   async presentModal(e) {
     const modal = await this.modalController.create({
       component: ModalPage,
@@ -119,9 +122,14 @@ export class PatientNotificationPage implements OnInit,AfterViewInit,AfterViewCh
 
     return await modal.present();
   }
+  logOut(){ 
+    if (localStorage.getItem('currentUser')) { 
+    localStorage.removeItem('currentUser');
+    this.router.navigateByUrl('/login');
+    } 
+  }
 
-
-  constructor(public datepipe: DatePipe,private modalService: NgbModal,public modalController: ModalController) {
+  constructor(private router: Router,public datepipe: DatePipe,private modalService: NgbModal,public modalController: ModalController) {
     this.selected_month = 'September';
     var point = (function () {
       var point = new VisitDetails();

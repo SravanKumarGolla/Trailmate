@@ -7,6 +7,7 @@ import { SpinnerDialog } from '@ionic-native/spinner-dialog/ngx';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalController, AlertController } from '@ionic/angular';
 import { ModalPage } from '../modal/modal.page';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-survey',
   templateUrl: './survey.page.html',
@@ -17,9 +18,17 @@ export class SurveyPage implements OnInit {
   patientdetails:PatientVM[]=[];
   loading:boolean= false;
   mobile:boolean;
-  constructor(public alertController: AlertController,private modalService: NgbModal,public modalController: ModalController,private trailmateService:ApiService,private spinnerDialog: SpinnerDialog) {
+  constructor(private router: Router,public alertController: AlertController,private modalService: NgbModal,public modalController: ModalController,private trailmateService:ApiService,private spinnerDialog: SpinnerDialog) {
 
    }
+
+   logOut(){ 
+    if (localStorage.getItem('currentUser')) { 
+    localStorage.removeItem('currentUser');
+    this.router.navigateByUrl('/login');
+    } 
+  }
+
    async presentAlert(event,visitDesc,e) {
     const alert = await this.alertController.create({
       header: 'Survey Triggered',
@@ -55,21 +64,7 @@ export class SurveyPage implements OnInit {
     this.megaPhoneElement.setAttribute("name", "megaphone"); 
   }
   
-   async presentModal(e) {
-    const modal = await this.modalController.create({
-      component: ModalNotificationPage,
-      componentProps: {
-        'firstName': 'Douglas',
-        'lastName': 'Adams',
-        'items': '[1,2,3,4,5,6,7,8,9]',
-        'visitDetail': e
-      }
-    });
-
-    return await modal.present();
-
-  }
- 
+  
 
    
  

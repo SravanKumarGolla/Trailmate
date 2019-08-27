@@ -46,6 +46,7 @@ const routes: Routes = [
         loadChildren: '../displaysurvey/displaysurvey.module#DisplaySurveyPageModule'
       }
     ]
+ 
   }
 ];
  

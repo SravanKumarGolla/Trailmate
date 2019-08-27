@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -8,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class MainPage implements OnInit {
   user:any;
   role:string;
-  constructor() { }
+ 
+constructor(private router: Router) {} 
 
   ngOnInit() {
    
@@ -22,4 +24,10 @@ export class MainPage implements OnInit {
     }
     console.log('user : ', JSON.parse(localStorage.getItem('currentUser')));
    }
+   logOut(){ 
+    if (localStorage.getItem('currentUser')) { 
+    localStorage.removeItem('currentUser');
+    this.router.navigateByUrl('/login');
+    } 
+}
 }

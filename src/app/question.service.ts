@@ -9,7 +9,6 @@ import { SurveyQuestionnaireVM } from './models/SurveyQuestionnaireVM';
 import { QuestionControlService } from './question-control.service';
 import { FormGroup } from '@angular/forms';
 
-
 @Injectable()
 export class QuestionService {
   surveyQuestionnaire:SurveyQuestionnaireVM[]=[];
@@ -20,7 +19,7 @@ export class QuestionService {
   questions: QuestionBase<any>[]=[]; 
   constructor(private trailmateService: ApiService,private qcs: QuestionControlService) {}
 
- getSurveyQuestionnaire(){
+getSurveyQuestionnaire(){
   debugger
   let questions: QuestionBase<any>[] = [
 
@@ -142,74 +141,83 @@ export class QuestionService {
     
 //     });
 
-
-
   // TODO: get from a remote source of question metadata
   // TODO: make asynchronous
+
+  // {key: 'Awesome',  value: 'Awesome'},
+  // {key: 'Excellent',  value: 'Excellent'},
+  // {key: 'Good',   value: 'Good'},
+  // {key: 'Bad', value: 'Bad'}
+
   getQuestions() {
     let questions: QuestionBase<any>[] = [
 
       new DropdownQuestion({
           key: '12',
-          label: ' Question Text 1 ',
+          label: 'How was your overall site visit?',
           options: [
-            {key: 'Awesome',  value: 'Awesome'},
-            {key: 'Excellent',  value: 'Excellent'},
-            {key: 'Good',   value: 'Good'},
-            {key: 'Bad', value: 'Bad'}
+            {key: 'Good',  value: 'Good'},
+            {key: 'Bad',  value: 'Bad'}
           ],
           
-          order: 5
+          order: 1
         }),
   
-        new TextboxQuestion({
+        new DropdownQuestion({
           key: '13',
-          label: ' Question Text 2 ',
-         
-          order: 6
+          label: 'How was the Trial Site infrastructure for you ?',
+          options: [
+            {key: 'Good',  value: 'Good'},
+            {key: 'Bad',  value: 'Bad'}
+          ],
+          
+          order: 2
         }),
   
-        new TextboxQuestion({
+        new RadioButtonQuestion({
           key: '10',
-          label: ' Question Text 3',
-          
+          label: ' Do you feel happy about the incentives provided to you?',
+          options: [
+            {key: 'Good',  value: 'Yes'},
+            {key: 'Bad',  value: 'No'},            
+            ],
           order: 3
         }),
         new RadioButtonQuestion({
           key: '8',
-          label: ' Question Text 4 ',
+          label: ' Do you feel the investigative process is expeditious?',
           options: [
-            {key: 'Awesome',  value: 'Awesome'},
-            {key: 'Excellent',  value: 'Excellent'},
-            {key: 'Good',   value: 'Good'},
-            {key: 'Bad', value: 'Bad'}
-            ],
-          
-          order: 1
+            {key: 'Good',  value: 'Yes'},
+            {key: 'Bad',  value: 'No'},            
+            ],          
+          order: 4
         }),
-        new DropdownQuestion({
+        new RadioButtonQuestion({
           key: '9',
-          label: ' Question Text 5 ',
+          label: ' Do you feel the Site investigator is intimidating?',
           options: [
-            {key: 'Awesome',  value: 'Awesome'},
-            {key: 'Excellent',  value: 'Excellent'},
-            {key: 'Good',   value: 'Good'},
-            {key: 'Bad', value: 'Bad'}
-            ],
-           
-          order: 2
+            {key: 'Bad',  value: 'Yes'},
+            {key: 'Good',  value: 'No'},            
+            ],  
+          order: 5
         }),
         new RadioButtonQuestion({
           key: '11',
-          label: ' Question Text 6',
+          label: ' Did you feel difficulty in reaching the site?',
           options: [
-            {key: 'Awesome',  value: 'Awesome'},
-            {key: 'Excellent',  value: 'Excellent'},
-            {key: 'Good',   value: 'Good'},
-            {key: 'Bad', value: 'Bad'}
-            ],
-        
-          order :  4
+            {key: 'Bad',  value: 'Yes'},
+            {key: 'Good',  value: 'No'},            
+            ],         
+          order :  6
+        }),
+        new RadioButtonQuestion({
+          key: '14',
+          label: ' Do you still have a feeling of worriness on side effects?',
+          options: [
+            {key: 'Bad',  value: 'Yes'},
+            {key: 'Good',  value: 'No'},            
+            ],         
+          order :  7
         })
   ];
 

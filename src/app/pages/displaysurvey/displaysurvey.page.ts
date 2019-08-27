@@ -13,6 +13,7 @@ import { RadioButtonQuestion } from 'src/app/question-radio';
 import { DropdownQuestion } from 'src/app/question-dropdown';
 import { TextboxQuestion } from 'src/app/question-textbox';
 import { QuestionService } from 'src/app/question.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -23,10 +24,16 @@ import { QuestionService } from 'src/app/question.service';
 })
 export class DisplaySurveyPage implements OnInit, AfterViewInit {
     questions: any[];
-  constructor(private service: QuestionService) { 
+  constructor(private router: Router,private service: QuestionService) { 
     debugger
     this.questions = this.service.getQuestions();
     console.log('this.questions :' + JSON.stringify(this.questions))
+  }
+  logOut(){ 
+    if (localStorage.getItem('currentUser')) { 
+    localStorage.removeItem('currentUser');
+    this.router.navigateByUrl('/login');
+    } 
   }
 
   ngOnInit() {

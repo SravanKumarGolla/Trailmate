@@ -4,13 +4,15 @@
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <ion-title>Trialmate</ion-title>
+      <ion-title slot="start">Trialmate</ion-title>
+      <ion-icon name="log-out" slot="end"></ion-icon> 
+      <ion-label slot="end" style="padding:10px;" (click)="logOut($event)" >LogOut</ion-label>   
     </ion-toolbar>
   </ion-header>
    
   <ion-content padding>
-     <h3>   Patient Notifications</h3>
-
+     <h3>  Manage Visits</h3>
+   
      <ion-item>
         <ion-label>Month:</ion-label>
         <ion-select placeholder="Select Month--" (ionChange)="onMonthChange($event)">
@@ -19,7 +21,7 @@
         </ion-select>
         </ion-item> 
 
-
+    
      <ion-grid>
       <ion-row >
         <ion-col *ngFor="let e of filteredVisits" size-xs="12" size-sm="6"
@@ -55,4 +57,9 @@
         </ion-col>
       </ion-row>
     </ion-grid>
+
+    <ion-item *ngIf="!filteredVisits || hasAnyVisitsToDisplay()">
+         <h3> No Visits have been scheduled for you </h3>
+    </ion-item>
+    
   </ion-content>

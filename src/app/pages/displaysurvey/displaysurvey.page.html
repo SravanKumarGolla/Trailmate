@@ -12,12 +12,14 @@
           <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
           </ion-buttons>
-          <ion-title>Survey Questinnaire</ion-title>
+          <ion-title slot="start">Trialmate</ion-title>
+          <ion-icon name="log-out" slot="end"></ion-icon> 
+<ion-label slot="end" style="padding:10px;" (click)="logOut($event)" >LogOut</ion-label>
         </ion-toolbar>
       </ion-header>
        
       <ion-content padding>
-         <h3>  Survey Questinnaire </h3>
+         <h3>  Survey Questionnaire </h3>
          <div>
     
             <app-dynamic-form [questions]="questions"></app-dynamic-form>
