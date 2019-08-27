@@ -1,3 +1,4 @@
+
 export class PatientVM {
    id:number;
    patientName:string;

@@ -25,7 +25,7 @@ export class SurveyPage implements OnInit {
 
    }
 
-   logOut(){ 
+   logOut(e){ 
     if (localStorage.getItem('currentUser')) { 
     localStorage.removeItem('currentUser');
     this.router.navigateByUrl('/login');

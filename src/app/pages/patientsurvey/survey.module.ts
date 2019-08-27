@@ -7,8 +7,8 @@ import { IonicModule } from '@ionic/angular';
 
 import { PatientSurveyPage } from './survey.page';
 import { QuestionService } from 'src/app/question.service';
-import { DynamicFormComponent } from '../dynamicform/dynamic-form.component';
-import { DynamicFormQuestionComponent } from '../dynamicformquestion/dynamic-form-question.component';
+
+
 import { QuestionControlService } from 'src/app/question-control.service';
 import { DisplaySurveyPageModule } from '../displaysurvey/displaysurvey.module';
 
@@ -27,7 +27,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [PatientSurveyPage,DynamicFormComponent,DynamicFormQuestionComponent],
+  declarations: [PatientSurveyPage],
 providers: [QuestionService,QuestionControlService]
 })
 export class PatientSurveyPageModule {

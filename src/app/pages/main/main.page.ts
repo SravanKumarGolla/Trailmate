@@ -24,7 +24,7 @@ constructor(private router: Router) {}
     }
     console.log('user : ', JSON.parse(localStorage.getItem('currentUser')));
    }
-   logOut(){ 
+   logOut(e){ 
     localStorage.removeItem('currentUser');
     this.router.navigate(['/login'],{replaceUrl: true }); 
 }

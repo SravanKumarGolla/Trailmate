@@ -5,7 +5,9 @@ export class QuestionBase<T> {
     required: boolean;
     order: number;
     controlType: string;
-  
+    type:any;
+    options:any;
+
     constructor(options: {
         value?: T,
         key?: string,

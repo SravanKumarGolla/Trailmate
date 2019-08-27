@@ -9,8 +9,8 @@ import { PatientSurveyQuestionnaireVM } from './models/PatientSurveyQuestionnair
   providedIn: 'root'
 })
 export class ApiService {
-  //// apiURL: string = 'http://localhost:63527/api/';
-  apiURL: string = 'https://trialmateapi.azurewebsites.net/api';
+   apiURL: string = 'http://localhost:63527/api/';
+  //apiURL: string = 'https://trialmateapi.azurewebsites.net/api';
   constructor(private httpClient: HttpClient) {}
 
   public getAllPatients(){

@@ -25,52 +25,42 @@
 
   <ion-grid>
     <ion-row justify-content-center align-items-center>
+      <ion-item>
+          <ion-img src="../assets/img/withHeart.jpg"></ion-img>
+      </ion-item>
     </ion-row>
-    <ion-row   justify-content-center align-items-center>
-    </ion-row>
-    <ion-row  justify-content-center align-items-center>
-    </ion-row>
-        <ion-row justify-content-center align-items-center>
-          <ion-item></ion-item>
-          <ion-item>
-              <ion-img src="../assets/img/withHeart.jpg"></ion-img>
-          </ion-item>
-        </ion-row>
-      <ion-row justify-content-center align-items-center>
-    <ion-row justify-content-center align-items-center >
+<ion-row justify-content-center align-items-center >
 
-     
-          <ion-col col-9>
-              <ion-item>
-                  <ion-grid>
-                    <ion-row justify-content-center align-items-center>
-                      <!--  <ion-item>
-                    <h4 text-center margin-top>Enter your credentials</h4>
-                  </ion-item>-->
-                </ion-row>
-                  <ion-row justify-content-center align-items-center>
+ 
+      <ion-col col-9>
+              <ion-grid>
+                <!-- <ion-row justify-content-center align-items-center>
                     <ion-item>
-                      <!--<ion-label class="my-label"  stacked>Username &nbsp;&nbsp;&nbsp;</ion-label>-->
-                      <ion-input [(ngModel)]="username" placeholder="username"></ion-input>
+                <h4 text-center margin-top>Enter your credentials</h4>
                     </ion-item>
-                  </ion-row>
-                    <ion-row justify-content-center align-items-center>
-                    <ion-item>
-                      <!--<ion-label class="my-label" stacked>Password &nbsp;&nbsp;&nbsp;</ion-label>-->
-                      <ion-input type="password" [(ngModel)]="password" placeholder="password"></ion-input>
-                    </ion-item>
-                  </ion-row>
-                  <ion-row justify-content-center align-items-center>
-                      <ion-item>
-                          <ion-button color="primary" (click)="signIn()">Login</ion-button>
-                          <ion-button color="secondary" (click)="reset()">Reset</ion-button>
-                      </ion-item>
-                    </ion-row>
-                </ion-grid>
+                </ion-row> -->
+              <ion-row justify-content-center align-items-center>
+                <ion-item>
+                  <ion-label position="floating" class="my-label"  stacked>Username &nbsp;&nbsp;&nbsp;</ion-label>
+                  <ion-input [(ngModel)]="username"></ion-input>
                 </ion-item>
-          </ion-col>
-      </ion-row>
-    </ion-row>
-  </ion-grid>
+              </ion-row>
+                <ion-row justify-content-center align-items-center>
+                <ion-item>
+                  <ion-label position="floating" class="my-label" stacked>Password &nbsp;&nbsp;&nbsp;</ion-label>
+                  <ion-input type="password" [(ngModel)]="password"></ion-input>
+                </ion-item>
+              </ion-row>
+                <ion-row justify-content-center align-items-center>
+                  
+                      <ion-button color="primary" (click)="signIn()">Login</ion-button>
+                      <ion-button color="secondary" (click)="reset()">Reset</ion-button>
+                  
+                </ion-row>
+            </ion-grid>
+      </ion-col>
+</ion-row>
+<ion-row justify-content-center align-items-center>
+</ion-row>
+</ion-grid>
 
-  

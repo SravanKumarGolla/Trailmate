@@ -29,7 +29,7 @@ export class DisplaySurveyPage implements OnInit, AfterViewInit {
     this.questions = this.service.getQuestions();
     console.log('this.questions :' + JSON.stringify(this.questions))
   }
-  logOut(){ 
+  logOut(e){ 
     if (localStorage.getItem('currentUser')) { 
     localStorage.removeItem('currentUser');
     this.router.navigateByUrl('/login');
