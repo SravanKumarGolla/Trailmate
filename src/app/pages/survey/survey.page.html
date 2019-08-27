@@ -28,7 +28,10 @@
           <ion-card-header>
 
             <ion-card-title>
-              <ion-text> {{e?.PatientName}} - {{e?.VisitDescription}}</ion-text>
+              <!-- <ion-text> {{e?.PatientName}} - {{e?.VisitDescription}} 
+                
+              </ion-text> -->
+              <ion-text> {{e?.PatientName}} - <ion-label (click)="openVisitPopup(e)"><u>{{e?.VisitDescription}}</u></ion-label></ion-text> 
               <ion-img *ngIf="e.SurveyStatus == 'Responded' && e.HappyIndex=='ThinkingToContinue'" col-6
               src='../assets/img/Neutral_Blue.png' style="width:10%"></ion-img>
             <ion-img *ngIf="e.SurveyStatus == 'Responded' && e.HappyIndex=='WillNotContinue'" col-6
@@ -109,11 +112,9 @@
         <ion-label> {{e?.PatientName}}</ion-label>
 
       </ion-col>
-      <ion-col size="3">
-        <div>
-          {{e?.VisitDescription}}
-        </div>
-      </ion-col>
+      <ion-col size="3"> 
+        <ion-label (click)="openVisitPopup(e)" style= "cursor: pointer"><u>{{e?.VisitDescription}}</u></ion-label> 
+        </ion-col> 
       <ion-col size="2">
   
           

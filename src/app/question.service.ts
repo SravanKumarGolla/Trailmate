@@ -20,7 +20,7 @@ export class QuestionService {
   constructor(private trailmateService: ApiService,private qcs: QuestionControlService) {}
 
 getSurveyQuestionnaire(){
-  debugger
+  
   let questions: QuestionBase<any>[] = [
 
       new DropdownQuestion({

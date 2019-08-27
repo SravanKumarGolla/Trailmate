@@ -11,7 +11,7 @@
         <ion-list *ngSwitchCase="'dropdown'">
             <ion-item>
                 <ion-label color="dark" style="font-weight: bolder">{{question.label}}</ion-label>
-                <ion-select placeholder="Please Select" stacked [id]="question.key"  [formControlName]="question.key">
+                <ion-select  interface="popover"   placeholder="Please Select" stacked [id]="question.key"  [formControlName]="question.key">
                     <ion-select-option justify-content-center slot="start" *ngFor="let opt of question.options" [value]="opt.key">{{opt.value}}
                     </ion-select-option>
                 </ion-select>

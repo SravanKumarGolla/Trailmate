@@ -20,7 +20,7 @@ export class DynamicFormComponent implements OnInit {
   payLoad = '';
   questionDetails: any[];
   constructor(private qcs: QuestionControlService,private service: QuestionService, private trialmateService : ApiService) {  
-      debugger
+      
       this.questionDetails = this.service.getQuestions();
       console.log('this.questions' + JSON.stringify(this.questionDetails))
     this.form = this.qcs.toFormGroup(this.questionDetails);
@@ -32,15 +32,15 @@ export class DynamicFormComponent implements OnInit {
   }
 
   onSubmit() {
-    debugger;
+
     this.patientSurveyQuestionnaire= [];
     this.payLoad = this.form.value;
     console.log('payload' + JSON.stringify(this.form.value))
-    debugger;
+ 
     let arr = [8,9,10,11,12,13]
     var patientSQ :any
     for(let questionId of arr){
-      debugger;
+     
       let response= this.payLoad[questionId];
       patientSQ = (function () {
         var patientSQ = new PatientSurveyQuestionnaireVM();
@@ -56,7 +56,6 @@ export class DynamicFormComponent implements OnInit {
    this.trialmateService.postSurveyQuestionnaire(this.patientSurveyQuestionnaire).subscribe(
      result=>
      {
-       debugger
        console.log(JSON.stringify(result))
      }
    );

@@ -30,7 +30,7 @@ export class UserLoginComponent implements OnInit {
     this.password=''
   }
     signIn() {
-        debugger;
+        
       let user =  this.authenticationService.login(this.username, this.password);
         
       // if(user.username =="admin"){

@@ -10,7 +10,7 @@ export class PatientSurveyPage implements OnInit {
   questions: any[];
   mobile:boolean;
   constructor(private service: QuestionService) { 
-    debugger
+ 
     this.questions = this.service.getSurveyQuestionnaire();
     console.log('this.questions :' + JSON.stringify(this.questions))
   }

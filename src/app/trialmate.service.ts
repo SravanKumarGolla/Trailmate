@@ -9,8 +9,8 @@ import { PatientSurveyQuestionnaireVM } from './models/PatientSurveyQuestionnair
   providedIn: 'root'
 })
 export class ApiService {
-  apiURL: string = 'http://localhost:63527/api/';
-
+  //// apiURL: string = 'http://localhost:63527/api/';
+  apiURL: string = 'https://trialmateapi.azurewebsites.net/api';
   constructor(private httpClient: HttpClient) {}
 
   public getAllPatients(){
@@ -18,12 +18,12 @@ export class ApiService {
 }
 
 public getSurveyQuestionnaire(patientId,visitId):Observable<any>{
-  debugger
+  
   return this.httpClient.get<SurveyQuestionnaireVM[]>(`${this.apiURL}/SurveyQuestionnaire/` + patientId + `/`+ visitId);
 }
 
 public postSurveyQuestionnaire(patientSQ:PatientSurveyQuestionnaireVM[]):Observable<any>{
-  debugger
+
   //return this.httpClient.post(`${this.apiURL}/customers/`,customer);
   return this.httpClient.post(`${this.apiURL}/SurveyQuestionnaire/`,patientSQ);
 }

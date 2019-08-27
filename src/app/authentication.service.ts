@@ -7,7 +7,7 @@ export class AuthenticationService {
     constructor(private http: HttpClient) { }
 
     login(username: string, password: string) {
-        debugger;
+       
         if(username == 'admin' || username=="patient"){
             let user={ username :username, password:password};
             localStorage.setItem('currentUser', JSON.stringify(user));

@@ -25,7 +25,7 @@ import { Router } from '@angular/router';
 export class DisplaySurveyPage implements OnInit, AfterViewInit {
     questions: any[];
   constructor(private router: Router,private service: QuestionService) { 
-    debugger
+   
     this.questions = this.service.getQuestions();
     console.log('this.questions :' + JSON.stringify(this.questions))
   }
