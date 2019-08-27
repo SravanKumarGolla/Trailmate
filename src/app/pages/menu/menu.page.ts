@@ -55,6 +55,11 @@ export class MenuPage implements OnInit {
           title: 'Respond Survey',
           url: '/menu/displaysurvey',
           icon: 'megaphone'
+        },
+        {
+          title: 'Manage Alerts',
+          url: '/menu/patientnotications',
+          icon: 'alert'
         }
       ]
     }

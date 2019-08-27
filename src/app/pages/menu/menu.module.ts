@@ -44,7 +44,11 @@ const routes: Routes = [
       {
         path: 'displaysurvey',
         loadChildren: '../displaysurvey/displaysurvey.module#DisplaySurveyPageModule'
-      }
+      },
+      {
+        path: 'patientnotications',
+        loadChildren: '../patnots/patnotification.module#PatNotificationPageModule'
+      },
     ]
  
   }

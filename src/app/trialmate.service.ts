@@ -4,6 +4,7 @@ import { PatientVM } from './models/PatientVM';
 import { SurveyQuestionnaireVM } from './models/SurveyQuestionnaireVM';
 import { Observable } from 'rxjs';
 import { PatientSurveyQuestionnaireVM } from './models/PatientSurveyQuestionnaire';
+import { EngagementContentVM } from './models/EngagementContent';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,11 @@ public postSurveyQuestionnaire(patientSQ:PatientSurveyQuestionnaireVM[]):Observa
 
   //return this.httpClient.post(`${this.apiURL}/customers/`,customer);
   return this.httpClient.post(`${this.apiURL}/SurveyQuestionnaire/`,patientSQ);
+}
+
+public getEngagementContent(patientId,visitId):Observable<any>{
+  
+  return this.httpClient.get<EngagementContentVM[]>(`${this.apiURL}/EngagementContent/` + patientId + `/`+ visitId);
 }
 
 

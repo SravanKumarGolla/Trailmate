@@ -5,8 +5,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { NotificationPage } from './notification.page';
-import { TabsPageRoutingModule } from './tabs.router.module';
+
+import { PatTabsPageRoutingModule } from './pattabs.router.module';
+import { PatNotificationPage } from './patnotification.page';
 
 // const routes: Routes = [
 //   {
@@ -20,8 +21,8 @@ import { TabsPageRoutingModule } from './tabs.router.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    TabsPageRoutingModule
+    PatTabsPageRoutingModule
   ],
-  declarations: [NotificationPage]
+  declarations: [PatNotificationPage]
 })
-export class NotificationPageModule {}
+export class PatNotificationPageModule {}
