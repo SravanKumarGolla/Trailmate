@@ -15,7 +15,7 @@
    
      <ion-item>
         <ion-label>Month:</ion-label>
-        <ion-select placeholder="Select Month--" (ionChange)="onMonthChange($event)">
+        <ion-select interface="popover" placeholder="Select Month--" (ionChange)="onMonthChange($event)">
         <ion-select-option *ngFor="let month of monthNames" [selected]="selected_month == month" value={{month}}>{{ month }}</ion-select-option> 
         
         </ion-select>

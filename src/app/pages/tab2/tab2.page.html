@@ -1,9 +1,35 @@
 <ion-header>
     <ion-toolbar>
       <ion-title>
-        Event Reminders
+        Dashboard
       </ion-title>
     </ion-toolbar>
   </ion-header>
   
-  <ion-content></ion-content>
+  <ion-content *ngIf="mobile">
+      <div class="chartWrapper">
+    <div class="chartAreaWrapper">
+            <canvas  baseChart 
+                    [datasets]="lineChartData"
+                    [labels]="lineChartLabels"
+                    [options]="lineChartOptions"
+                    [colors]="lineChartColors"
+                    [legend]="lineChartLegend"
+                    [chartType]="lineChartType"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)" ></canvas>
+                  </div>
+                  </div>
+  </ion-content>
+  <ion-content *ngIf="!mobile" style="width:600px;height:600px">
+            <canvas  baseChart 
+                    [datasets]="lineChartData"
+                    [labels]="lineChartLabels"
+                    [options]="lineChartOptions"
+                    [colors]="lineChartColors"
+                    [legend]="lineChartLegend"
+                    [chartType]="lineChartType"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)" ></canvas>
+                  
+  </ion-content>

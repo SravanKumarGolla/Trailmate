@@ -1,25 +1,109 @@
-
 <ion-header>
-<ion-toolbar color="primary">
-<ion-buttons slot="start">
-<ion-menu-button></ion-menu-button>
-</ion-buttons>
-<ion-title  slot="start">Trialmate</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title  slot="start">Trialmate</ion-title>
 
-<ion-label slot="end" style="padding:10px;">Welcome {{user.username}}</ion-label> 
- 
+    <ion-label slot="end" style="padding:10px;">Welcome {{user.username}}</ion-label>
 
-<ion-icon name="log-out" slot="end"></ion-icon> 
-<ion-label slot="end" style="padding:10px;" (click)="logOut($event)" >LogOut</ion-label>
-</ion-toolbar>
-</ion-header> 
- 
 
- 
+    <ion-icon name="log-out" slot="end"></ion-icon> 
+    <ion-label slot="end" style="padding:10px;" (click)="logOut($event)" >LogOut</ion-label>
+  </ion-toolbar>
+</ion-header>
+
+
+
 <ion-content padding *ngIf="role==='admin'">
-   <h3>  Manage your trails to keep the patients engaged with the trial</h3>
+  <!-- <h3>  Manage your trails to keep the patients engaged with the trial</h3> -->
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Trial Information
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+  <h3> <b>Quest for new cancer treatment crosses milestone </b></h3>
+  <h6>
+    Therapy excels in pilot clinical trials
+
+    A cancer therapy invented at Rice University has crossed a milestone in clinical trials, a major development in a
+    decades long quest to develop a treatment that destroys tumors without the debilitating side effects of
+    chemotherapy, invasive surgery and radiation.
+
+    Thirteen of the first 15 prostate cancer patients treated in a clinical trial of the nanoparticle-based, focal
+    therapy showed no detectable signs of cancer a year after treatment, according to a study published this week in the
+    Proceedings of the National Academy of Sciences (PNAS).
+
+    The paper presents the results from 16 patients who were treated at the Icahn School of Medicine at Mount Sinai in
+    New York. It is believed to be the first published clinical study of a photothermal cancer therapy -- one that uses
+    illuminated nanoparticles to heat and destroy tumors -- in a refereed scientific journal, said the study's authors.
+  </h6>
+
+  <h3><b> Details </b></h3>
+  <h6>
+    Therapy excels in pilot clinical trials
+
+    A cancer therapy invented at Rice University has crossed a milestone in clinical trials, a major development in a
+    decades long quest to develop a treatment that destroys tumors without the debilitating side effects of
+    chemotherapy, invasive surgery and radiation.
+
+    Thirteen of the first 15 prostate cancer patients treated in a clinical trial of the nanoparticle-based, focal
+    therapy showed no detectable signs of cancer a year after treatment, according to a study published this week in the
+    Proceedings of the National Academy of Sciences (PNAS).
+
+    The paper presents the results from 16 patients who were treated at the Icahn School of Medicine at Mount Sinai in
+    New York. It is believed to be the first published clinical study of a photothermal cancer therapy -- one that uses
+    illuminated nanoparticles to heat and destroy tumors -- in a refereed scientific journal, said the study's authors.
+  </h6>
+
+
 </ion-content>
 
 <ion-content padding *ngIf="role==='patient'">
-  <h3>  Manage your visit(s) and stay tuned for further updates. Your health is our utmost priority </h3>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Trial Information
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <h3> <b>Quest for new cancer treatment crosses milestone </b></h3>
+  <h6>
+    Therapy excels in pilot clinical trials
+
+    A cancer therapy invented at Rice University has crossed a milestone in clinical trials, a major development in a
+    decades long quest to develop a treatment that destroys tumors without the debilitating side effects of
+    chemotherapy, invasive surgery and radiation.
+
+    Thirteen of the first 15 prostate cancer patients treated in a clinical trial of the nanoparticle-based, focal
+    therapy showed no detectable signs of cancer a year after treatment, according to a study published this week in the
+    Proceedings of the National Academy of Sciences (PNAS).
+
+    The paper presents the results from 16 patients who were treated at the Icahn School of Medicine at Mount Sinai in
+    New York. It is believed to be the first published clinical study of a photothermal cancer therapy -- one that uses
+    illuminated nanoparticles to heat and destroy tumors -- in a refereed scientific journal, said the study's authors.
+  </h6>
+
+  <h3><b> Details </b></h3>
+  <h6>
+    Therapy excels in pilot clinical trials
+
+    A cancer therapy invented at Rice University has crossed a milestone in clinical trials, a major development in a
+    decades long quest to develop a treatment that destroys tumors without the debilitating side effects of
+    chemotherapy, invasive surgery and radiation.
+
+    Thirteen of the first 15 prostate cancer patients treated in a clinical trial of the nanoparticle-based, focal
+    therapy showed no detectable signs of cancer a year after treatment, according to a study published this week in the
+    Proceedings of the National Academy of Sciences (PNAS).
+
+    The paper presents the results from 16 patients who were treated at the Icahn School of Medicine at Mount Sinai in
+    New York. It is believed to be the first published clinical study of a photothermal cancer therapy -- one that uses
+    illuminated nanoparticles to heat and destroy tumors -- in a refereed scientific journal, said the study's authors.
+  </h6>
 </ion-content>

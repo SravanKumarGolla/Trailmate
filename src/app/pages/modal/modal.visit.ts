@@ -34,7 +34,7 @@ import { NavParams, ModalController } from '@ionic/angular';
   </ion-col>
   <ion-col>
     <div>
-    {{VisitDescription}}
+    {{VisitDescrption}}
     </div>
   </ion-col> 
 </ion-row>

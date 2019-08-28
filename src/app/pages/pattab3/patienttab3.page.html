@@ -1,70 +1,54 @@
 <ion-header>
         <ion-toolbar>
             <ion-title>
-                Trial news
+                Health Alerts
             </ion-title>
         </ion-toolbar>
     </ion-header>
+    <!-- ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Notifications</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content padding>
+<!-- <h3> Notification Content </h3> -->
+<ion-list *ngFor="let e of engagementContent">
+    <!-- Multi-line sliding item with icon options on both sides -->
+    <ion-item-sliding id="item100">
+      <ion-item >
+        <ion-label>
+          <h2>{{e?.AlertType}}</h2>
+          <p>{{e?.NotificationContent}}</p>
+          <!-- <p>Oceanic Next has joined your network</p> -->
+        </ion-label>
+        <ion-note slot="end">
+         {{e?.VisitDescription}}
+        </ion-note>
+      </ion-item>
+  
+      <ion-item-options side="start">
+        <ion-item-option>
+          <ion-icon slot="icon-only" name="heart"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+  
+      <ion-item-options side="end">
+        <ion-item-option color="danger">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+        <ion-item-option>
+          <ion-icon slot="icon-only" name="star"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  
     
-    <ion-content fullscreen padding scroll-y="false">
-        <ion-slides>
+  </ion-list>
+</ion-content>
+
     
-            <!-- <ion-slide>
-    
-                <ion-grid>
-                    <ion-row style="padding:10px" >
-                        <ion-col size="12">
-                            <ion-textarea style="border:ridge !important" wrap="soft" placeholder="Write a trail news..." ></ion-textarea>
-                        </ion-col>
-    
-                    </ion-row>
-                    <ion-row style="padding:10px" color="primary">
-                        <ion-col size="12">
-                            <section>
-                                <ion-button expand="block">Broadcast news to all patients</ion-button>
-                            </section>
-                        </ion-col>
-    
-                    </ion-row>
-                </ion-grid>
-    
-            </ion-slide> -->
-    
-            <ion-slide>
-                <ion-img src="../assets/img/withHeart_Slide1.jpg"></ion-img>
-                <!-- <h2>Welcome to the <b>ICA</b></h2> -->
-                <p>Getting Patient input early in trial design is so important to getting
-                    enrollment and I know you are going to be an awesome advocate for all us
-                </p>
-            </ion-slide>
-    
-            <ion-slide>
-                <ion-img src="../assets/img/withHeart_Slide2.jpg"></ion-img>
-                <!-- <h2>What is Ionic?</h2> -->
-                <p>
-                    I am encouraged that new drugs and new trials are coming out every day, and I refuse
-                    to give in! We can do this!
-                </p>
-            </ion-slide>
-    
-            <ion-slide>
-                <ion-img src="../assets/img/withHeart_Slide3.jpg"></ion-img>
-                <!-- <h2>What is Ionic Pro?</h2> -->
-                <p>
-                    Consider clinical trials whenever treatment is going to begin or change.
-                    Trials are not a last-ditch effort. They offer a chance to try the treatment
-                    of the future today
-                </p>
-            </ion-slide>
-    
-            <ion-slide>
-                <ion-img src="../assets/img/withHeart_Slide4.jpg"></ion-img>
-                <!-- <h2>Ready to Play?</h2> -->
-                <p>
-                    Never give up what works for one may not for another. There is always another drug
-                    or trial to try or something on the horizon
-                </p>
-            </ion-slide>
-    
-        </ion-slides>
-    </ion-content>
+   

@@ -24,4 +24,7 @@ import { TabsPageRoutingModule } from './tabs.router.module';
   ],
   declarations: [NotificationPage]
 })
-export class NotificationPageModule {}
+export class NotificationPageModule {
+
+  
+}
