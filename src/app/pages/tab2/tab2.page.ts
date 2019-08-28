@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/trialmate.service';
 import { Dashboarddata } from 'src/app/models/Dashboard';
+import { Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-tab2',
@@ -61,15 +62,10 @@ public lineChartData:Array<any> = [
 ];
 getchartdata(){
   var Dashdata:any=[];
-  debugger;
-  Dashdata=this.getDashBoardData();
-  // Form HappyData from DB
-console.log(Dashdata)
 
-// sepHappy:number = 0
-// sepUnHappy:number = 0
-// sepNeutral:number = 0
-var counter = 0;
+  this.getDashBoardData().subscribe(result=>{
+    Dashdata= result;
+    var counter = 0;
 
 for(var j of Dashdata){
   if(j.MonthNameDesc=="August"){
@@ -117,9 +113,7 @@ for(var j of Dashdata){
   
 }
 
-console.log(this.HappyData)
-console.log(this.UnHappyData)
-console.log(this.Neutral)
+
 
   for(var i of this.lineChartData){
     
@@ -133,6 +127,14 @@ console.log(this.Neutral)
       i.data=this.Neutral;
     }
   }
+  });
+  // Form HappyData from DB
+
+
+// sepHappy:number = 0
+// sepUnHappy:number = 0
+// sepNeutral:number = 0
+
 }
 public lineChartLabels:Array<any> = ['August','September','October'];
 public lineChartOptions:any = {
@@ -190,20 +192,27 @@ public chartClicked(e:any):void {
 public chartHovered(e:any):void {
   console.log(e);
 }
-getFinalData(){  
-  var result:any[];
-  result=[{"MonthNameDesc":"August","HappyIndex":"Happy","NumberOfPatients":5},{"MonthNameDesc":"August","HappyIndex":"Neutral","NumberOfPatients":10},{"MonthNameDesc":"September","HappyIndex":"Happy","NumberOfPatients":5},{"MonthNameDesc":"September","HappyIndex":"UnHappy","NumberOfPatients":2},{"MonthNameDesc":"October","HappyIndex":"Happy","NumberOfPatients":2}];
-  return result;
-//   this.trailmateService.getTrialmateDashboard()
-//   .subscribe(result => {
-//      this.dashboarddetails = result 
-//      return this.dashboarddetails;
-//      console.log('this.dashboarddetails' + this.dashboarddetails)
-// } );  
+getFinalData():Observable<Dashboarddata[]>{  
+  // var result:any[];
+  // result=[{"MonthNameDesc":"August","HappyIndex":"Happy","NumberOfPatients":5},{"MonthNameDesc":"August","HappyIndex":"Neutral","NumberOfPatients":10},{"MonthNameDesc":"September","HappyIndex":"Happy","NumberOfPatients":5},{"MonthNameDesc":"September","HappyIndex":"UnHappy","NumberOfPatients":2},{"MonthNameDesc":"October","HappyIndex":"Happy","NumberOfPatients":2}];
+  // return result;
+  var subject = new Subject<Dashboarddata[]>();
+  this.trailmateService.getTrialmateDashboard()
+  .subscribe(result => {
+     this.dashboarddetails = result 
+
+     console.log('this.dashboarddetails' + this.dashboarddetails)
+     subject.next(this.dashboarddetails)
+     return this.dashboarddetails;
+    
+} );  
+return subject.asObservable();
+
 }
 
-getDashBoardData(){
-  var Dashdata:any=[]; 
+getDashBoardData():Observable<any>{
+  var subject = new Subject<any>();
+  var Dashdata:Dashboarddata[]=[]; 
   var happycountAug=0;
   var unhappycountAug=0;
   var neutralcountAug=0;
@@ -213,52 +222,60 @@ getDashBoardData(){
   var happycountOct=0;
   var unhappycountOct=0;
   var neutralcountOct=0;
-  
-  Dashdata=this.getFinalData();
-for(var i of Dashdata){
-if(i.MonthNameDesc=='August'){
-if( i.HappyIndex=='Happy'){
-  happycountAug=i.NumberOfPatients;
-}
-if(i.HappyIndex=='UnHappy'){
-  unhappycountAug=i.NumberOfPatients;
-}
-if(i.HappyIndex=='Neutral'){
-  neutralcountAug=i.NumberOfPatients;
-}
-var obj={MonthNameDesc:i.MonthNameDesc, happycountAug,unhappycountAug,neutralcountAug};
-this.finalData.push(obj);
-}
-if(i.MonthNameDesc=='September'){
-if( i.HappyIndex=='Happy'){
-  
-    happycountSep=i.NumberOfPatients;
-}
-if( i.HappyIndex=='UnHappy'){
-    unhappycountSep=i.NumberOfPatients;
-  }
-  if(i.HappyIndex=='Neutral'){
-    neutralcountSep=i.NumberOfPatients;
-  }
-  var obj1={MonthNameDesc:i.MonthNameDesc, happycountSep,unhappycountSep,neutralcountSep};
-  this.finalData.push(obj1);
-  }
-  if(i.MonthNameDesc=='October'){
-    if(i.HappyIndex=='Happy'){
-      happycountOct=i.NumberOfPatients;
+
+ this.getFinalData().subscribe((result) => {
+
+   console.log(JSON.stringify(result))
+   Dashdata = result
+
+   for(var i of Dashdata){
+    if(i.MonthNameDesc=='August'){
+    if( i.HappyIndex=='Happy'){
+      happycountAug=i.NumberOfPatients;
     }
     if(i.HappyIndex=='UnHappy'){
-      unhappycountOct=i.NumberOfPatients;
+      unhappycountAug=i.NumberOfPatients;
     }
     if(i.HappyIndex=='Neutral'){
-      neutralcountOct=i.NumberOfPatients;
+      neutralcountAug=i.NumberOfPatients;
     }
-    var obj2={MonthNameDesc:i.MonthNameDesc, happycountOct,unhappycountOct,neutralcountOct};
-    this.finalData.push(obj2);
+    var obj={MonthNameDesc:i.MonthNameDesc, happycountAug,unhappycountAug,neutralcountAug};
+    this.finalData.push(obj);
     }
-    
-  }
-  return this.finalData;
+    if(i.MonthNameDesc=='September'){
+    if( i.HappyIndex=='Happy'){
+      
+        happycountSep=i.NumberOfPatients;
+    }
+    if( i.HappyIndex=='UnHappy'){
+        unhappycountSep=i.NumberOfPatients;
+      }
+      if(i.HappyIndex=='Neutral'){
+        neutralcountSep=i.NumberOfPatients;
+      }
+      var obj1={MonthNameDesc:i.MonthNameDesc, happycountSep,unhappycountSep,neutralcountSep};
+      this.finalData.push(obj1);
+      }
+      if(i.MonthNameDesc=='October'){
+        if(i.HappyIndex=='Happy'){
+          happycountOct=i.NumberOfPatients;
+        }
+        if(i.HappyIndex=='UnHappy'){
+          unhappycountOct=i.NumberOfPatients;
+        }
+        if(i.HappyIndex=='Neutral'){
+          neutralcountOct=i.NumberOfPatients;
+        }
+        var obj2={MonthNameDesc:i.MonthNameDesc, happycountOct,unhappycountOct,neutralcountOct};
+        this.finalData.push(obj2);
+        }
+        
+      }
+     subject.next(this.finalData)
+ })
+ return subject.asObservable();
+  // Dashdata=this.getFinalData();
+
 }
 
 

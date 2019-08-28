@@ -102,7 +102,7 @@ export class SurveyPage implements OnInit {
     // this.trailmateService.getAllPatients()
     //   // clone the data object, using its known Config shape
     //   .subscribe((data: PatientVM[]) => this.patientdetails = { ...data });
-    //   debugger;
+  
     //   console.log(' Patient Details :' +  JSON.stringify(this.patientdetails))
   }
 

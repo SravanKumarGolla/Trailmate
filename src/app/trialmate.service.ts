@@ -17,8 +17,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ApiService {
-   //apiURL: string = 'http://localhost:63527/api/';
-  apiURL: string = 'https://trialmateapi.azurewebsites.net/api';
+  apiURL: string = 'http://localhost:63527/api/';
+  //apiURL: string = 'https://trialmateapi.azurewebsites.net/api';
   constructor(private httpClient: HttpClient) {}
 
   public getAllPatients(){
@@ -56,7 +56,7 @@ public getEngagementContent(patientId,visitId):Observable<any>{
 
 
 // async getSurveyQuestionnaire(patientId,visitId){
-//   debugger
+
  
 //   let data = await this.httpClient.get<SurveyQuestionnaireVM[]>(`${this.apiURL}/SurveyQuestionnaire/` + patientId + `/`+ visitId).toPromise();
 //   console.log('*** data ***' +  JSON.stringify(data))

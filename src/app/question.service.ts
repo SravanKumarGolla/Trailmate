@@ -92,7 +92,7 @@ getSurveyQuestionnaire(){
 //       console.log('SurveyQuestionnaire')
 //       console.log(JSON.stringify(result))
 //       let setOrder = 1;
-//       debugger
+
 //       for(let question of this.surveyQuestionnaire){
 //          if(question.QuestionType == 'Radio'){
 //              this.questions.push(new RadioButtonQuestion({
