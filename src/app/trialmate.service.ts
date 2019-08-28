@@ -17,8 +17,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ApiService {
-  apiURL: string = 'http://localhost:63527/api/';
-  //apiURL: string = 'https://trialmateapi.azurewebsites.net/api';
+  //apiURL: string = 'http://localhost:63527/api/';
+  apiURL: string = 'https://trialmateapi.azurewebsites.net/api';
   constructor(private httpClient: HttpClient) {}
 
   public getAllPatients(){
